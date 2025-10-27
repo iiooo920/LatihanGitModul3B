@@ -8,7 +8,7 @@ public class VirtualPet extends LivingThing {
     // 1. Encapsulate Field: Atribut menjadi private
     private int hunger;
     private int happiness;
-
+//viiv
     private static final int HUNGER_DECREASE = 20;
     private static final int HAPPINESS_INCREASE = 20;
 
