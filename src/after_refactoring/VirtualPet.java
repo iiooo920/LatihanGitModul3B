@@ -1,14 +1,21 @@
 package after_refactoring;
-// 5. Extract Superclass: Mewarisi dari LivingThing
+
+/**
+ * Merepresentasikan seekor peliharaan virtual yang memiliki tingkat lapar dan senang.
+ * Peliharaan ini dapat diberi makan dan diajak bermain
+ */
 public class VirtualPet extends LivingThing {
     // 1. Encapsulate Field: Atribut menjadi private
     private int hunger;
     private int happiness;
 
-    // 3. Replace Magic Number: Angka diganti konstanta
     private static final int HUNGER_DECREASE = 20;
     private static final int HAPPINESS_INCREASE = 20;
 
+    /**
+     * Membuat objek VirtualPet baru
+     * @param name Nama peliharaan
+     */
     public VirtualPet(String name) {
         super(name);
         this.hunger = 50;
@@ -19,7 +26,9 @@ public class VirtualPet extends LivingThing {
     public int getHunger() { return hunger; }
     public int getHappiness() { return happiness; }
 
-    // 2. Extract Method: Logika memberi makan dipisah
+    /**
+     * Memberi makan peliharaan. Mengurangi tingkat lapar jika peliharaan lapar
+     */
     public void feed() {
         if (this.hunger > 30) {
             this.hunger -= HUNGER_DECREASE;
@@ -29,7 +38,11 @@ public class VirtualPet extends LivingThing {
         }
     }
 
-    // 2. Extract Method: Logika bermain dipisah
+    /**
+     * Mengajak peliharaan bermain
+     * Akan menambah tingkat senang jika peliharaan belum terlalu senang (happiness < 70).
+     * Mencetak pesan status bermain ke konsol
+     */
     public void play() {
         if (this.happiness < 70) {
             this.happiness += HAPPINESS_INCREASE;
@@ -39,7 +52,9 @@ public class VirtualPet extends LivingThing {
         }
     }
 
-    // 4. Rename Method: 'live()' menjadi 'displayStatus()'
+    /**
+     * Menampilkan status terkini peliharaan (nama, lapar, senang) ke konsol
+     */
     public void displayStatus() {
         System.out.println("--- Status " + getName() + " ---");
         System.out.println("Lapar: " + this.hunger);
